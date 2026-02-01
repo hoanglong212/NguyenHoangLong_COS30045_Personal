@@ -1,0 +1,349 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Appliance Energy Consumption</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="navbar">
+      <div class="logo" onclick="showPage('home')">
+        <img src="img/PowerIcon (1).png" alt="Power Logo" />
+      </div>
+      <ul class="nav">
+        <li id="nav-home" class="active" onclick="showPage('home')" href="home">
+          Home
+        </li>
+        <li id="nav-tv" onclick="showPage('tv')">Televisions</li>
+        <li id="nav-about" onclick="showPage('about')">About Us</li>
+      </ul>
+    </header>
+
+    <main>
+      <section id="home" class="page active">
+        <div class="hero-wrapper">
+          <div class="hero-content">
+            <h1 class="fade-in">
+              Power Your Savings with<br />Smart Energy Choices
+            </h1>
+            <p class="fade-in-delay">
+              Discover how Australian households can reduce electricity bills by
+              up to 50% through intelligent appliance selection and
+              energy-efficient practices.
+            </p>
+            <div class="stats-grid">
+              <div class="stat-card">
+                <span class="icon">$</span>
+                <h2>$1,200</h2>
+                <p>Average Annual Savings</p>
+              </div>
+              <div class="stat-card">
+                <span class="icon">📉</span>
+                <h2>30%</h2>
+                <p>Energy Reduction Possible</p>
+              </div>
+              <div class="stat-card">
+                <span class="icon">🍃</span>
+                <h2>2.5T</h2>
+                <p>CO₂ Saved Per Year</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="energy-details">
+          <div class="consumption-container">
+            <div class="image-box">
+              <img
+                src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&w=800"
+                alt="Solar Panel"
+              />
+            </div>
+            <div class="chart-box">
+              <h2>Where Your Energy Goes</h2>
+              <div class="progress-item">
+                <div class="labels">
+                  <span>Heating & Cooling</span><span>40%</span>
+                </div>
+                <div class="bar">
+                  <div class="fill red" style="--val: 40%"></div>
+                </div>
+              </div>
+              <div class="progress-item">
+                <div class="labels">
+                  <span>Water Heating</span><span>25%</span>
+                </div>
+                <div class="bar">
+                  <div class="fill orange" style="--val: 25%"></div>
+                </div>
+              </div>
+              <div class="progress-item">
+                <div class="labels">
+                  <span>Refrigeration</span><span>8%</span>
+                </div>
+                <div class="bar">
+                  <div class="fill blue" style="--val: 8%"></div>
+                </div>
+              </div>
+              <div class="progress-item">
+                <div class="labels"><span>Lighting</span><span>7%</span></div>
+                <div class="bar">
+                  <div class="fill yellow" style="--val: 7%"></div>
+                </div>
+              </div>
+              <div class="progress-item">
+                <div class="labels">
+                  <span>TVs & Entertainment</span><span>10%</span>
+                </div>
+                <div class="bar">
+                  <div class="fill purple" style="--val: 10%"></div>
+                </div>
+              </div>
+              <div class="progress-item">
+                <div class="labels">
+                  <span>Other Appliances</span><span>10%</span>
+                </div>
+                <div class="bar">
+                  <div class="fill green" style="--val: 10%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="tv" class="page">
+        <div class="tv-hero">
+          <div class="tv-hero-content">
+            <div class="tv-icon"></div>
+            <h1>Television Energy Guide</h1>
+            <p>
+              Smart choices in TV selection and usage can save Australian
+              households $50-$200 annually while reducing environmental impact.
+            </p>
+          </div>
+        </div>
+
+        <div class="tv-comparison">
+          <div class="container">
+            <h2 class="section-title">Energy Consumption by TV Type</h2>
+            <div class="tv-grid">
+              <div class="tv-chart-card">
+                <div class="tv-grid"></div>
+              </div>
+            </div>
+
+            <div class="tv-tips-section">
+              <div class="container">
+                <h2 class="section-title">
+                  6 Ways to Reduce Your TV Energy Costs
+                </h2>
+                <div class="tips-grid">
+                  <div class="tip-card">
+                    <div class="tip-num">1</div>
+                    <div class="tip-info">
+                      <h4>Enable Eco Mode</h4>
+                      <p>Reduces brightness while maintaining quality.</p>
+                    </div>
+                  </div>
+                  <div class="tip-card">
+                    <div class="tip-num">2</div>
+                    <div class="tip-info">
+                      <h4>Optimize Brightness</h4>
+                      <p>Reduce to comfortable levels to save power.</p>
+                    </div>
+                  </div>
+                  <div class="tip-card">
+                    <div class="tip-num">3</div>
+                    <div class="tip-info">
+                      <h4>Use Power Boards</h4>
+                      <p>Switch off to eliminate standby power.</p>
+                    </div>
+                  </div>
+                  <div class="tip-card">
+                    <div class="tip-num">4</div>
+                    <div class="tip-info">
+                      <h4>Right-Size Your TV</h4>
+                      <p>Choose size based on viewing distance.</p>
+                    </div>
+                  </div>
+                  <div class="tip-card">
+                    <div class="tip-num">5</div>
+                    <div class="tip-info">
+                      <h4>Update Firmware</h4>
+                      <p>Keep software current for best efficiency.</p>
+                    </div>
+                  </div>
+                  <div class="tip-card">
+                    <div class="tip-num">6</div>
+                    <div class="tip-info">
+                      <h4>Check Star Rating</h4>
+                      <p>Look for 4+ star energy ratings.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="tv-chart-card">
+  <h3>Question 1: Screen Size and Power Consumption</h3>
+  <p>
+    Larger TVs generally consume more power. TVs above 75 inches show a
+    noticeable increase in average power consumption.
+  </p>
+  <img src="img/chart1_screen_size.png" alt="Screen size vs power consumption" />
+</div>
+
+<div class="tv-chart-card">
+  <h3>Question 2: Display Technology (75 inches and above)</h3>
+  <p>
+    For TVs sized 75 inches and above, OLED models consume less power on
+    average than LCD (including LED-backlit LCD).
+  </p>
+  <img src="img/chart2_technology_75plus.png" alt="Technology comparison for 75+ inch TVs" />
+</div>
+
+<div class="tv-chart-card">
+  <h3>Question 3: Brand Comparison (75 inches and above)</h3>
+  <p>
+    Power consumption varies across brands in the large-screen category,
+    reflecting differences in panel technology and energy efficiency design.
+  </p>
+  <img src="img/chart3_brand_75plus.png" alt="Brand comparison for 75+ inch TVs" />
+</div>
+
+      </section>
+
+      <section id="about" class="page">
+        <div class="aboutus-hero">
+          <div class="AboutUs-hero-content">
+            <h1>Empowering Australians to Save Energy</h1>
+            <p>
+              Your trusted resource for making informed decisions about
+              appliance energy consumption and reducing household electricity
+              costs across Australia.
+            </p>
+          </div>
+        </div>
+
+        <div class="about-mission-wrapper">
+          <div class="mission-content-left">
+            <div class="mission-header-group">
+              <div class="mission-icon-box">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <circle cx="12" cy="12" r="2"></circle>
+                  <circle cx="12" cy="12" r="6"></circle>
+                </svg>
+              </div>
+              <h2>Our Mission</h2>
+            </div>
+
+            <div class="mission-text-body">
+              <p>
+                With energy costs rising across Australia and climate change
+                concerns growing, we believe that empowering consumers with
+                accessible, practical knowledge is the first step toward more
+                sustainable energy use.
+              </p>
+
+              <p>
+                By understanding how appliances consume energy and learning
+                about energy-efficient alternatives, Australian households can
+                significantly reduce their electricity bills while contributing
+                to a more sustainable future for our country.
+              </p>
+
+              <p>
+                Our goal is to make energy efficiency information simple,
+                actionable, and relevant to everyday Australians making
+                purchasing and usage decisions.
+              </p>
+            </div>
+          </div>
+
+          <div class="mission-image-right">
+            <img
+              src="img/smart-home-hub.jpg"
+              alt="Google Nest Hub displaying energy controls"
+            />
+          </div>
+        </div>
+
+        <div class="about-stats-wrapper">
+          <div class="stats-header">
+            <h2>Why Focus on Appliances?</h2>
+            <p>
+              Household appliances represent a significant and often overlooked
+              opportunity for energy savings in Australian homes
+            </p>
+          </div>
+
+          <div class="stats-grid-container">
+            <div class="stat-box">
+              <div class="stat-number">18-20</div>
+              <div class="stat-label">KWH PER DAY</div>
+              <div class="stat-desc">
+                Average electricity use in Australian homes
+              </div>
+            </div>
+
+            <div class="stat-box">
+              <div class="stat-number">30%</div>
+              <div class="stat-label">FROM APPLIANCES</div>
+              <div class="stat-desc">
+                Portion of energy consumed by household appliances
+              </div>
+            </div>
+
+            <div class="stat-box">
+              <div class="stat-number">24/7</div>
+              <div class="stat-label">ALWAYS ON</div>
+              <div class="stat-desc">
+                Many appliances operate continuously, even in standby
+              </div>
+            </div>
+
+            <div class="stat-box">
+              <div class="stat-number">$500+</div>
+              <div class="stat-label">ANNUAL SAVINGS</div>
+              <div class="stat-desc">
+                Potential savings with efficient appliances and usage
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="author-section container">
+          <div class="author-card">
+            <h3>Author</h3>
+            <p>
+              <strong>Nguyen Hoang Long</strong><br />
+              COS30045 – Data Visualisation<br />
+              Swinburne University of Technology (Vietnam)
+            </p>
+            <p class="ai-note">
+              GenAI assistance acknowledged (Gemini & Figma) for UI/UX and code
+              optimization.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>© 2026 Nguyen Hoang Long | Energy Consumption Guide</p>
+      <p style="font-size: 0.8rem; opacity: 0.7">
+        GenAI assistance acknowledged (Gemini & Figma)
+      </p>
+    </footer>
+
+    <script src="index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+  </body>
+</html>

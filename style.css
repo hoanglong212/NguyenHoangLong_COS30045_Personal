@@ -1,0 +1,704 @@
+/* ============================
+   1. Global Variables & Reset
+=============================== */
+:root {
+  --primary-orange: #8d5d0f;
+  --hero-gradient: linear-gradient(135deg, #a67c4b 0%, #d9a05b 100%);
+  --bg-light: #fefaf6;
+  --text-dark: #4a3728;
+  --white: #ffffff;
+
+  /* Reusable */
+  --border-radius-sm: 8px;
+  --border-radius-md: 15px;
+  --border-radius-lg: 25px;
+  --border-radius-xl: 50px;
+
+  --box-shadow-light: 0 5px 15px rgba(0, 0, 0, 0.02);
+  --box-shadow-medium: 0 10px 30px rgba(0, 0, 0, 0.05);
+  --box-shadow-heavy: 0 25px 50px rgba(0, 0, 0, 0.12);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: var(--bg-light);
+  color: var(--text-dark);
+  overflow-x: hidden;
+}
+
+/* ============================
+   2. Navbar
+=============================== */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 5%;
+  background-color: var(--primary-orange);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: var(--box-shadow-medium);
+}
+
+.logo img {
+  height: 80px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+.logo img:hover {
+  transform: scale(1.1);
+}
+
+.nav {
+  display: flex;
+  gap: 15px;
+  list-style: none;
+}
+.nav li {
+  padding: 8px 18px;
+  border-radius: var(--border-radius-sm);
+  cursor: pointer;
+  font-weight: 500;
+  color: var(--white);
+  transition:
+    background 0.3s,
+    font-weight 0.3s;
+}
+.nav li:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+.nav li.active {
+  background-color: rgba(255, 255, 255, 0.3);
+  font-weight: bold;
+}
+.nav li:focus {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
+/* ============================
+   3. Page & Transitions
+=============================== */
+.page {
+  display: none;
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
+}
+.page.active {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ============================
+   4. Hero Section (Home & TV)
+=============================== */
+.hero-wrapper,
+.tv-hero {
+  background: var(--hero-gradient);
+  color: var(--white);
+  padding: 80px 5% 120px;
+  text-align: center;
+}
+.tv-hero {
+  padding: 60px 20px 100px;
+}
+
+.hero-content h1,
+.tv-hero h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  margin-bottom: 25px;
+  font-weight: 700;
+}
+.hero-content p,
+.tv-hero p {
+  max-width: 700px;
+  margin: 0 auto 50px;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  opacity: 0.95;
+}
+
+/* ============================
+   5. Stats Grid (Home)
+=============================== */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 25px;
+}
+.stat-card {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  padding: 30px;
+  border-radius: var(--border-radius-lg);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease;
+}
+.stat-card:hover {
+  transform: translateY(-10px);
+  background: rgba(255, 255, 255, 0.25);
+}
+.stat-card .icon {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  display: block;
+}
+.stat-card h2 {
+  font-size: 2.5rem;
+  margin: 10px 0;
+  font-weight: 700;
+}
+.stat-card p {
+  font-size: 0.95rem;
+  opacity: 0.9;
+}
+
+/* ============================
+   6. Energy Details & Progress Bars
+=============================== */
+.energy-details {
+  padding: 80px 5%;
+}
+.consumption-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+.image-box img {
+  width: 100%;
+  border-radius: var(--border-radius-xl);
+  box-shadow: var(--box-shadow-heavy);
+}
+.chart-box h2 {
+  font-size: 2.2rem;
+  margin-bottom: 35px;
+  color: var(--text-dark);
+}
+.progress-item {
+  margin-bottom: 25px;
+}
+.labels {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+.bar {
+  background: #eee3d8;
+  height: 14px;
+  border-radius: 20px;
+  overflow: hidden;
+}
+.fill {
+  height: 100%;
+  border-radius: 20px;
+  width: 0;
+}
+
+/* Animation for progress bars with stagger */
+.page.active .fill {
+  animation: slideFill 1.8s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+}
+.progress-item:nth-child(1) .fill {
+  animation-delay: 0s;
+}
+.progress-item:nth-child(2) .fill {
+  animation-delay: 0.2s;
+}
+.progress-item:nth-child(3) .fill {
+  animation-delay: 0.4s;
+}
+
+/* Progress Bar Colors */
+.red {
+  background: #ef5350;
+}
+.orange {
+  background: #ffa726;
+}
+.blue {
+  background: #42a5f5;
+}
+.yellow {
+  background: #fbc02d;
+}
+.purple {
+  background: #ab47bc;
+}
+.green {
+  background: #66bb6a;
+}
+
+/* ============================
+   7. TV Cards & Comparison
+=============================== */
+.tv-comparison .container h2 {
+  text-align: center;
+  margin: 64px;
+  font-size: 40px;
+}
+
+.tv-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  padding: 0 5%;
+}
+
+.tv-card {
+  background: var(--white);
+  border-radius: var(--border-radius-lg);
+  padding: 35px 25px;
+  text-align: center;
+  position: relative;
+  box-shadow: var(--box-shadow-medium);
+  transition: transform 0.3s ease;
+  overflow: hidden;
+  border: 1px solid #f0f0f0;
+}
+
+.tv-card:hover {
+  transform: translateY(-10px);
+  box-shadow: var(--box-shadow-heavy);
+}
+
+/* Badge Styling */
+.tv-card .badge {
+  position: absolute;
+  top: 10px;
+  left: 164px;
+  padding: 8px 20px;
+  border-radius: 30px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: white;
+  background-color: #27ae60;
+  border: 2px solid transparent;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  z-index: 2;
+  transition: all 0.3s ease;
+}
+
+.tv-card .badge:hover {
+  transform: scale(1.05);
+  filter: brightness(1.1);
+}
+
+.tv-card .badge.best {
+  background-color: #27ae60;
+  border-color: #27ae60;
+}
+.tv-card .badge.popular {
+  background-color: #3498db;
+  border-color: #3498db;
+}
+.tv-card .badge.premium {
+  background-color: #9b59b6;
+  border-color: #9b59b6;
+}
+.tv-card .badge.outdated {
+  background-color: #e74c3c;
+  border-color: #e74c3c;
+}
+
+.tv-card h3 {
+  font-size: 1.5rem;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  color: var(--text-dark);
+  font-weight: 700;
+}
+
+/* Energy display styling */
+.energy-display {
+  background: linear-gradient(135deg, #fdf5e8 0%, #f8e9cc 100%);
+  border-radius: var(--border-radius-md);
+  padding: 25px 20px;
+  margin: 25px 0;
+  border: 1px solid #f0e2c5;
+}
+
+.watt-value {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #333;
+  letter-spacing: 1px;
+}
+
+.cost-tag {
+  color: #a67c4b;
+  font-weight: 700;
+  margin-bottom: 20px;
+  background: linear-gradient(135deg, #fef9f3 0%, #fcf0e0 100%);
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: var(--border-radius-sm);
+  border: 1px solid #f0e0c5;
+  font-size: 1.1rem;
+}
+
+.tv-card p.description {
+  font-size: 0.95rem;
+  color: #666;
+  line-height: 1.5;
+  margin-top: 15px;
+  font-style: italic;
+  padding: 0 10px;
+}
+
+/* ============================
+   TV Charts Styling (NEW)
+=============================== */
+
+.tv-chart-card {
+  max-width: 1200px;
+  margin: 80px auto;
+  padding: 50px 40px;
+  background: #ffffff;
+  border-radius: 24px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+  text-align: center;
+}
+
+.tv-chart-card h3 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+  color: var(--text-dark);
+}
+
+.tv-chart-card p {
+  max-width: 800px;
+  margin: 0 auto 40px;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: #555;
+}
+.tv-chart-card img {
+  width: 1000px;
+  height: 700px;
+}
+
+/* ============================
+   8. Tips Section
+=============================== */
+.tv-tips-section {
+  background: #fdf8f3;
+  padding: 80px 5%;
+}
+.tips-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 25px;
+  margin-top: 40px;
+}
+.tip-card {
+  background: var(--white);
+  padding: 25px;
+  border-radius: var(--border-radius-md);
+  display: flex;
+  gap: 20px;
+  box-shadow: var(--box-shadow-light);
+  transition: transform 0.3s ease;
+}
+.tip-card:hover {
+  transform: translateY(-5px);
+}
+.tip-num {
+  background: #eb9113;
+  color: var(--white);
+  min-width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+.tip-card:hover .tip-num {
+  transform: scale(1.1);
+  transition: transform 0.3s ease;
+}
+.tip-info h4 {
+  margin-bottom: 8px;
+  color: var(--text-dark);
+  font-size: 1.1rem;
+}
+.tip-info p {
+  font-size: 0.95rem;
+  color: #666;
+  line-height: 1.5;
+}
+
+/* ============================
+   9. Animations
+=============================== */
+@keyframes slideFill {
+  from {
+    width: 0;
+  }
+  to {
+    width: var(--val);
+  }
+}
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes popIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  70% {
+    transform: scale(1.02);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.fade-in {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+.fade-in-delay {
+  animation: fadeInUp 0.8s ease-out 0.3s backwards;
+}
+
+.page.active .tv-card {
+  animation: popIn 0.6s ease-out backwards;
+}
+.tv-card:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.tv-card:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.tv-card:nth-child(3) {
+  animation-delay: 0.3s;
+}
+.tv-card:nth-child(4) {
+  animation-delay: 0.4s;
+}
+
+/* =========================================
+   10. ABOUT US SECTION STYLING (NEW)
+   ========================================= */
+
+#about {
+  background-color: #fffcf7;
+  font-family: "Segoe UI", sans-serif;
+}
+
+.about-mission-wrapper,
+.about-stats-wrapper,
+.author-section {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.aboutus-hero {
+  width: 100%;
+  background: var(--hero-gradient);
+  color: var(--white);
+  padding: 80px 5% 120px;
+  text-align: center;
+}
+.AboutUs-hero-content h1,
+.AboutUs-hero-content h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  margin-bottom: 25px;
+  font-weight: 700;
+}
+.AboutUs-hero-content p,
+.AboutUs-hero-content p {
+  max-width: 700px;
+  margin: 0 auto 50px;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  opacity: 0.95;
+}
+
+/* --- PHẦN 1: OUR MISSION --- */
+.about-mission-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 50px;
+  margin-bottom: 80px;
+}
+
+.mission-content-left {
+  flex: 1;
+  max-width: 600px;
+}
+
+/* Header: Icon + Title */
+.mission-header-group {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.mission-icon-box {
+  width: 50px;
+  height: 50px;
+  background-color: #2d8cff; /* Màu xanh dương sáng */
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  flex-shrink: 0;
+}
+
+.mission-icon-box svg {
+  width: 28px;
+  height: 28px;
+  stroke-width: 2;
+}
+
+.mission-header-group h2 {
+  font-size: 1.5rem;
+  color: #444;
+  font-weight: 600;
+  margin: 0;
+}
+
+/* Nội dung Text Mission */
+.mission-text-body p {
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  font-size: 1rem;
+}
+
+/* Ảnh Mission bên phải */
+.mission-image-right {
+  flex: 1;
+  max-width: 500px;
+}
+
+.mission-image-right img {
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  object-fit: cover;
+}
+
+/* --- PHẦN 2: WHY FOCUS ON APPLIANCES (Màu Cam) --- */
+.about-stats-wrapper {
+  background-color: #e69635; /* Màu cam đất chủ đạo */
+  border-radius: 20px;
+  padding: 60px 40px;
+  text-align: center;
+  color: white;
+}
+
+.stats-header h2 {
+  color: #333; /* Tiêu đề màu tối trên nền cam */
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.stats-header p {
+  color: #fff;
+  font-size: 1.1rem;
+  margin-bottom: 50px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Grid chứa 4 thẻ trắng */
+.stats-grid-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.stat-box {
+  background-color: white;
+  border-radius: 12px;
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+}
+
+.stat-box:hover {
+  transform: translateY(-5px);
+}
+
+.stat-number {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #d9822b;
+  margin-bottom: 10px;
+}
+
+.stat-label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 15px;
+}
+
+.stat-desc {
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.4;
+}
+
+/* --- PHẦN AUTHOR --- */
+.author-section {
+  margin-top: 60px;
+  text-align: center;
+  padding: 20px;
+  border-top: 1px solid #eee;
+}
+
+/* ============================
+   12. Footer
+=============================== */
+footer {
+  background: linear-gradient(to right, #dcab0a65, #cb770a);
+  text-align: center;
+  padding: 30px;
+  color: var(--white);
+  font-size: 0.9rem;
+}
