@@ -428,33 +428,53 @@ body {
    TV Charts Styling (NEW)
 =============================== */
 
+/* ============================
+   TV Charts Section
+=============================== */
+
 .tv-chart-card {
-  max-width: 1200px;
-  margin: 80px auto;
-  padding: 50px 40px;
   background: #ffffff;
-  border-radius: 24px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
-  text-align: center;
+  border-radius: 20px;
+  padding: 40px 35px;
+  margin-bottom: 50px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
+.tv-chart-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 25px 45px rgba(0, 0, 0, 0.12);
+}
+
+/* Title */
 .tv-chart-card h3 {
-  font-size: 2rem;
+  font-size: 1.6rem;
   font-weight: 700;
-  margin-bottom: 15px;
-  color: var(--text-dark);
+  margin-bottom: 18px;
+  color: #1f2937; /* slate-800 */
 }
 
+/* Paragraphs */
 .tv-chart-card p {
-  max-width: 800px;
-  margin: 0 auto 40px;
-  font-size: 1.05rem;
-  line-height: 1.6;
-  color: #555;
+  font-size: 1rem;
+  line-height: 1.75;
+  color: #4b5563; /* gray-600 */
+  margin-bottom: 16px;
+  max-width: 900px;
 }
+
+/* Image */
 .tv-chart-card img {
-  width: 1000px;
-  height: 700px;
+  width: 50%;
+  max-width: 950px;
+  margin: 30px auto 0;
+  display: block;
+  border-radius: 16px;
+  background: #f9fafb;
+  padding: 18px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
 }
 
 /* ============================
